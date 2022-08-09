@@ -26,6 +26,13 @@ También brindar difusión para que se incorporen perros y gatos al refugio, as�
           - 1.1.2. Herramienta de búsqueda de refugio por nombre.
           - 1.1.3. Vista de la ficha del refugio buscado.
    - 1.3. Módulo Veterinaria:
-          - 1.1.1. Registrar una ficha médica formulario.
-          - 1.1.2. Herramienta de búsqueda de mascota por nombre.
-          - 1.1.3. Vista de la ficha de la mascota buscada.
+          - 1.1.1. Registrar una ficha médica mediante formulario.
+          - 1.1.2. Herramienta de búsqueda de ficha médica por registro (se va a asociar el registro a cada mascota).
+          - 1.1.3. Vista de la ficha veterinaria buscada.
+
+2. Próximas funcionalidades - Release 2
+   - 2.1. Vinculación entre las fichas veterinarias y cada mascota a través de un ID único.
+   - 2.2. Módulo para registro de usuarios que deseen ser adoptantes, para facilitar la carga de información. Este módulo permitirá también su registro como voluntarios de los refugios.
+   - 2.3. Módulo con información para donaciones. 
+   - 2.4. Módulo de empleados con la nómina de personal y su vinculación a cada sede del refugio. 
+   - 2.5. Panel de administrador que permita, con usuario y clave, gestionar los empleados y su distribución entre refugios.
