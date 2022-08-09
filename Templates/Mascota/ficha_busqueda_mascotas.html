@@ -1,0 +1,23 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Buscador de mascotas -
+{% endblock %}
+
+{% block contenidoQueCambia%}
+
+<div style = "padding: 20px 40px;">
+
+    <form action="{% url "buscar-mascota" %}" method="GET"  style = "padding: 20px 80px;border-color: BLACK;border-width: 5px;border-style: solid;"> {% csrf_token %}
+
+        <p>Ingrese nombre del animal a buscar: <input type ="text" name="nickname" id="nickname"></p>
+     
+         <input type="submit"  value="Buscar">
+     
+     
+     </form>
+     
+</div>
+{% endblock %}
