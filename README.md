@@ -2,20 +2,24 @@
 # Read Me
 
 ***Objetivos***
+
 - Desarrollar una WEB Django con patrón MVT con una temática definida por el equipo de trabajo.
 - Trabajar exitosamente y de forma coordinada en equipo bajo el entorno de GitHub.
 - Aplicar los conocimientos aprendidos durante las clases en un sitio web completamente funcional
 
 ***Integrantes***
+
 - Kedy Acuña
 - César Damián Correa
 - Augusto Römer
 
 ***Temática***
+
 Página web para refugio de mascotas que permita interactuar con el usuario y agilizar proceso de adopción. 
 También brindar difusión para que se incorporen perros y gatos al refugio, así como gestionar la recepción de donaciones.
 
 ***Contenido y funcionalidades***
+
 1. Funciones vigentes al 09/08/2022:
    - 1.1. Módulo Mascotas:
           - 1.1.1. Registrar una mascota mediante formulario.
