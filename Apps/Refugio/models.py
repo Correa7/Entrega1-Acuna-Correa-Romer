@@ -5,7 +5,7 @@ class Refugio(models.Model):
     nombre = models.CharField(max_length= 80, unique=True)
     telefono = models.IntegerField(unique=True)
     email = models.EmailField(unique=True)
-    direccion = models.TextField(max_length=200) 
+    domicilio = models.TextField(max_length=200) 
    
 
 
