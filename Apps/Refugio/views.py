@@ -17,7 +17,7 @@ def Ficha_refugio1 (request):
         if miFormulario.is_valid():
 
             data = miFormulario.cleaned_data
-            ficha = Refugio(nombre = data["nombre"], telefono = data["telefono"], email= data["email"], direccion= data["direccion"])
+            ficha = Refugio(nombre = data["nombre"], telefono = data["telefono"], email= data["email"], domicilio= data["domicilio"])
             ficha.save()
 
             return render (request, "index.html" , context ={})
