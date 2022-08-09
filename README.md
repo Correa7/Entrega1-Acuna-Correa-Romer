@@ -1,6 +1,8 @@
 # Proyecto Final Comisión 31090 - Python
 # Read Me
 
+# admin = admin  ; contraseña = 123
+
 ***Objetivos***
 
 - Desarrollar una WEB Django con patrón MVT con una temática definida por el equipo de trabajo.
