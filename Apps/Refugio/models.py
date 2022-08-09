@@ -10,4 +10,4 @@ class Refugio(models.Model):
 
 
     def __str__(self):
-        return f" {self.nombre} - {self.telefono} - {self.email} - {self.direccion}"
+        return f" {self.nombre} - {self.telefono} - {self.email} - {self.domicilio}"
