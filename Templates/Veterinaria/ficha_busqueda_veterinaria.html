@@ -2,13 +2,18 @@
 
 {% load static %}
 
+{% block titulo %}
+    Buscador de fichas veterinarias -
+{% endblock %}
+
 {% block contenidoQueCambia%}
 
 <div style = "padding: 20px 40px;">
 
+    <h1>Buscador de fichas veterinarias</h1>
     <form action="{% url "buscar" %}" method="GET" style = "padding: 20px 80px;border-color: BLACK;border-width: 5px;border-style: solid;"> {% csrf_token %}
 
-        <p>Ficha de Salud Numero: <input type ="number" name="registro" id="registro"></p>
+        <p>Ficha de Salud N°: <input type ="number" name="registro" id="registro" placeholder="Ingrese un núm. entero"></p>
      
          <input type="submit"  value="Buscar">
      
