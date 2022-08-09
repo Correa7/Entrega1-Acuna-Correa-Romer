@@ -22,9 +22,7 @@ def Ficha_veterinaria (request):
 
             ficha.save()
 
-            # return redirect(inicio)
-
-            return render (request, "index.html" , context ={})
+            return render (request, "inicio.html" , context ={})
 
     else:
 

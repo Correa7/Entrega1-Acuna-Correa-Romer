@@ -11,6 +11,6 @@ urlpatterns = [
     path("inicio/", inicio, name="inicio"),
     path("en-construccion/", en_construccion, name="en_construccion"),
     path("", include("Apps.Mascota.urls")),
-    # path("", include("Apps.Refugio.urls")),
+    path("", include("Apps.Refugio.urls")),
     path("", include("Apps.Veterinaria.urls"))
 ]
