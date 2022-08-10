@@ -10,7 +10,7 @@ urlpatterns = [
     path("padre/", padre, name="padre"),
     path("inicio/", inicio, name="inicio"),
     path("en-construccion/", en_construccion, name="en_construccion"),
-    path("", include("Apps.Mascota.urls")),
-    path("", include("Apps.Refugio.urls")),
-    path("", include("Apps.Veterinaria.urls"))
+    path("Mascota/", include("Apps.Mascota.urls")),
+    path("Refugio/", include("Apps.Refugio.urls")),
+    path("Veterinaria/", include("Apps.Veterinaria.urls"))
 ]
