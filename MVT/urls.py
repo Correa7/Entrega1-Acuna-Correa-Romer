@@ -6,7 +6,7 @@ from MVT.views import index, padre, inicio, en_construccion
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("index/", index, name="index"),
+    path("", index, name="index"),
     path("padre/", padre, name="padre"),
     path("inicio/", inicio, name="inicio"),
     path("en-construccion/", en_construccion, name="en_construccion"),
