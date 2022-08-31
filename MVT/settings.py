@@ -18,6 +18,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -30,6 +31,8 @@ INSTALLED_APPS = [
     "Apps.Mascota",
     "Apps.Refugio",
     "Apps.Veterinaria",
+    "Apps.User",
+    "Apps.SendMail",
 ]
 
 
@@ -41,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+   
 ]
 
 ROOT_URLCONF = 'MVT.urls'
@@ -97,9 +101,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ARG'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
@@ -113,7 +117,23 @@ STATIC_URL = 'Templates/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR/"Templates/static",]
+
+
+
+
+MEDIA_URL = "/Media/"
+
+MEDIA_ROOT = BASE_DIR / "Media"
+
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_HOST_USER = 'home.salvando.patitas@gmail.com'
+EMAIL_HOST_PASSWORD = 'pceywxyyphhsruwj'
+EMAIL_PORT = "587"
+EMAIL_USE_TLS= True
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
