@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>
         {% block titulo %}
-
+        Index - Salvando Patitas
         {% endblock%}
 
         Salvando Patitas - Pet Care Website Template
@@ -41,28 +41,28 @@
         <div class="row bg-secondary py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-white pr-3" href="">FAQs</a>
+                    <a class="text-white pr-3" href="{% url "preguntas-frecuentes" %}">FAQs</a>
                     <span class="text-white">|</span>
-                    <a class="text-white px-3" href="">Ayuda</a>
+                    <a class="text-white px-3" href="{% url "terminos-condiciones" %}">Términos y condiciones</a>
                     <span class="text-white">|</span>
-                    <a class="text-white pl-3" href="">Soporte</a>
+                    <a class="text-white pl-3" href="{% url "politica-privacidad" %}">Política de privacidad</a>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-3" href="">
+                    <a class="text-white px-3" href="https://www.facebook.com/" target="_blank">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a class="text-white px-3" href="">
+                    <a class="text-white px-3" href="https://twitter.com/" target="_blank">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a class="text-white px-3" href="">
+                    <a class="text-white px-3" href="https://www.linkedin.com/" target="_blank">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a class="text-white px-3" href="">
+                    <a class="text-white px-3" href="https://www.instagram.com/" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a class="text-white pl-3" href="">
+                    <a class="text-white pl-3" href="https://www.youtube.com/" target="_blank">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
@@ -70,7 +70,7 @@
         </div>
         <div class="row py-3 px-lg-5">
             <div class="col-lg-4">
-                <a href="" class="navbar-brand d-none d-lg-block">
+                <a href="{% url "index" %}" class="navbar-brand d-none d-lg-block">
                     <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Salvando</span>Patitas</h1>
                 </a>
             </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="d-inline-flex flex-column text-center px-3 border-right">
                         <h6>Envíanos un email</h6>
-                        <p class="m-0">info@example.com</p>
+                        <p class="m-0">home.salvando.patitas@gmail.com</p>
                     </div>
                     <div class="d-inline-flex flex-column text-center pl-3">
                         <h6>Llámanos</h6>
@@ -106,35 +106,107 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
+                    
+                    
+                    {% if request.user.is_staff %}
+
                     <a href="{% url "index" %}" class="nav-item nav-link active">Inicio</a>
-                    <a href="{% url "en_construccion" %}" class="nav-item nav-link">Sobre Nosotros</a>
-                    <!-- <a href="service.html" class="nav-item nav-link">Service</a>
-                    <a href="price.html" class="nav-item nav-link">Price</a> -->
+
+                   
+
+                    <a href="{% url "sobre-nosotros" %}" class="nav-item nav-link">Sobre nosotros</a>
+
+                   
+                   
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Mascotas</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="{% url "ficha-mascotas" %}" class="dropdown-item">Cargar Mascota rescatada</a>
-                            <a href="{% url "ficha-busqueda-mascota"%}" class="dropdown-item">Buscar Mascota</a>
+                            <a href="{% url "lista-mascota" %}" class="dropdown-item">Mascotas</a>
+                            <a href="{% url "ficha-mascotas" %}" class="dropdown-item">Cargar Mascota</a>
+      
                         </div>
                     </div>
          
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Refugios</a>
                         <div class="dropdown-menu rounded-0 m-0">
+                            <a href="{% url "lista-refugio" %}" class="dropdown-item">Refugios</a>
                             <a href="{% url "ficha-refugio" %}" class="dropdown-item">Cargar Refugio</a>
-                            <a href="{% url "ficha-busqueda-refugio" %}" class="dropdown-item">Buscar Refugio</a>
+                           
+   
                         </div>
                     </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Veterinaria</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="{% url "ficha-veterinaria" %}" class="dropdown-item">Cargar Ficha Medica</a>
-                            <a href="{% url "ficha-busqueda"%}" class="dropdown-item">Buscar Ficha Veterinaria</a>
-                        </div>
-                    </div>
-                    <a href="{% url "en_construccion" %}" class="nav-item nav-link">Contacto</a>
+                    
+                    <a href="{% url "donaciones" %}" class="nav-item nav-link">Donaciones</a> 
+                   
+                    {% else %}
+                            {% if request.user.is_authenticated %}
+                            
+                           
+                                <a href="{% url "index" %}" class="nav-item nav-link active">Inicio</a>
+                                <a href="{% url "sobre-nosotros" %}" class="nav-item nav-link">Sobre nosotros</a>
+                                <a href="{% url "lista-mascota" %}" class="nav-item nav-link">Mascotas</a>
+                                <a href="{% url "lista-refugio" %}" class="nav-item nav-link">Refugios</a>
+                                <a href="{% url "donaciones" %}" class="nav-item nav-link">Donaciones</a> 
+                    
+                            
+                            {% else %}
+                            
+                           
+                                <a href="{% url "index" %}" class="nav-item nav-link active">Inicio</a>
+                                <a href="{% url "sobre-nosotros" %}" class="nav-item nav-link">Sobre nosotros</a>
+                                <a href="{% url "lista-mascota" %}" class="nav-item nav-link">Mascotas</a>
+                                <a href="{% url "lista-refugio" %}" class="nav-item nav-link">Refugios</a>
+                                                  
+                            
+                            {% endif %}
+
+                    {% endif %}
+                   
                 </div>
-                <a href="{% url "en_construccion" %}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Haz una donación!</a>
+                
+                {% if request.user.is_authenticated %}
+                <!-- <a href="{% url "en_construccion" %}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Haz una donación!</a> -->
+                
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+
+                        {% if user.profile.image %}
+
+                        <img src="{{user.profile.image.url}}" , style="border-radius: 50% ;" width="40px", height="40px" >
+
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="{% url "perfil" %}" class="dropdown-item">Mi perfil</a>
+                        
+                        
+                            <a href="{% url "logout" %}" class="dropdown-item">Logout</a>
+                        </div>
+
+                        {% else %}
+                            
+                            <img src="{% static "img\perfil-empty.png" %}" , border-radius="50%", width="40px", height="40px" >
+                        
+                        
+                        </a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                        
+                            <a href="{% url "crear-profile" %}" class="dropdown-item">Crea tu Perfil</a>
+                            <a href="{% url "eliminar-usuario" user.id%}" class="dropdown-item">Eliminar Usuario</a>
+                            <a href="{% url "logout" %}" class="dropdown-item">logout</a>
+                        </div>
+                        {% endif%}
+                        
+                    </div>
+
+
+
+                {% else %}
+
+                    <a href="{% url "login" %}" class="btn btn-lg btn-primary px-3 d-none d-lg-block"style ="padding:1px;margin-rigth:8px; border-color:black ;">Login</a>
+                    <a href="{% url "register" %}" class="btn btn-lg btn-primary px-3 d-none d-lg-block"style ="padding:1px;margin-rigth:8px;border-color:black">Registrate</a>
+
+                {%endif%}
+                
             </div>
         </nav>
     </div>
@@ -152,8 +224,8 @@
                             <h3 class="text-white mb-3 d-none d-sm-block">No Compres, Adopta!</h3>
                             <h1 class="display-3 text-white mb-3">Haz Feliz a una Mascota</h1>
                             <h5 class="text-white mb-3 d-none d-sm-block">Muchos animales estan a la espera de un hogar</h5>
-                            <a href="{% url "en_construccion" %}" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Mascotas</a>
-                            <a href="{% url "en_construccion" %}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Aprende mas</a>
+                            <a href="{% url "lista-mascota" %}" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Mascotas</a>
+                            <a href="{% url "news-letter" %}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Aprende mas</a>
                         </div>
                     </div>
                 </div>
@@ -164,10 +236,16 @@
                             <h3 class="text-white mb-3 d-none d-sm-block">No Compres, Adopta!</h3>
                             <h1 class="display-3 text-white mb-3">Participa, las mascotas te necesitan!</h1>
                             <h5 class="text-white mb-3 d-none d-sm-block">Sumate a la causa: Se Voluntario de uno de nuestros Refugios.</h5>
-                            <a href="{% url "en_construccion" %}" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Voluntarios
+                            
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url "voluntario" %}" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Se un Voluntario</a>
+                             {% else %}
+                             <a href="{% url "requerimiento" %}" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Se un Voluntario</a>
+                            {% endif %}
 
-                            </a>
-                            <a href="{% url "en_construccion" %}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Aprende Mas</a>
+                            
+                            
+                            <a href="{% url "news-letter" %}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Aprende Mas</a>
                         </div>
                     </div>
                 </div>
@@ -185,75 +263,43 @@
         </div>
     </div>
     <!-- Carousel End -->
-    <br>
-    <br>
-    <br>
-    <br>
+   
     {% block contenidoQueCambia %}
-<br>
+
     {% endblock%}
-    <br>
-    <br>
-    <br>
-    <br>
+   
     <!-- Booking Start -->
+    <br><br><br>
     <div class="container-fluid bg-light">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5">
-                    <div class="bg-primary py-5 px-4 px-sm-5">
-                        <form class="py-5">
-                            <div class="form-group">
-                                <input type="text" class="form-control border-0 p-4" placeholder="Tu nombre" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control border-0 p-4" placeholder="Tu email" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <div class="date" id="date" data-target-input="nearest">
-                                    <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Tu fecha de nacimiento" data-target="#date" data-toggle="datetimepicker"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="time" id="time" data-target-input="nearest">
-                                    <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Tu edad" data-target="#time" data-toggle="datetimepicker"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <select class="custom-select border-0 px-4" style="height: 47px;">
-                                    <option selected>Selecciona una ubicación</option>
-                                    <option value="1">Buenos Aires</option>
-                                    <option value="2">Capital Federal</option>
-                                    <option value="3">Córdoba</option>
-                                </select>
-                            </div>
-                            <div>
-                                <button class="btn btn-dark btn-block border-0 py-3" type="submit">Book Now</button>
-                            </div>
-                        </form>
+                    <div class="bg-primary py-5 px-10 px-sm-5">
+                        <img class="img-fluid w-100" src="{%static "img/team-3.jpg" %}" weidht="200px" alt=""><br>
+                       
                     </div>
                 </div>
                 <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
-                    <h4 class="text-secondary mb-3">Conviértete en voluntario!</h4>
+                    <h4 class="text-secondary mb-3">Adopta un animalito!</h4>
                     <h1 class="display-4 mb-4">Salva a <span class="text-primary">una patita</span></h1>
-                    <p>Labore vero lorem eos sed aliquy ipsum aliquy sed. Vero dolore dolore takima ipsum lorem rebum</p>
+                    <p>Adoptar un animal debe ser una unión para toda la vida y no debe ser nunca una decisión tomada a la ligera</p>
                     <div class="row py-2">
                         <div class="col-sm-6">
                             <div class="d-flex flex-column">
                                 <div class="d-flex align-items-center mb-2">
                                     <h1 class="flaticon-house font-weight-normal text-secondary m-0 mr-3"></h1>
-                                    <h5 class="text-truncate m-0">Cuidado veterinario</h5>
+                                    <h5 class="text-truncate m-0">Vacunación responsable</h5>
                                 </div>
-                                <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet</p>
+                                <p>Contempla el cumplimiento del calendario de vacunación.</p>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex flex-column">
                                 <div class="d-flex align-items-center mb-2">
                                     <h1 class="flaticon-food font-weight-normal text-secondary m-0 mr-3"></h1>
-                                    <h5 class="text-truncate m-0">Cuidado alimentario</h5>
+                                    <h5 class="text-truncate m-0">Alimentación adecuada</h5>
                                 </div>
-                                <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet</p>
+                                <p>Procura cumplir con los lineamientos de alimentación según edades.</p>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -262,16 +308,16 @@
                                     <h1 class="flaticon-grooming font-weight-normal text-secondary m-0 mr-3"></h1>
                                     <h5 class="text-truncate m-0">Acompañamiento animal</h5>
                                 </div>
-                                <p class="m-0">Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet</p>
+                                <p class="m-0">Acompaña siempre a tu mascota, ellos te necesitan.</p>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex flex-column">
                                 <div class="d-flex align-items-center mb-2">
                                     <h1 class="flaticon-toy font-weight-normal text-secondary m-0 mr-3"></h1>
-                                    <h5 class="text-truncate m-0">Entrenamiento animal</h5>
+                                    <h5 class="text-truncate m-0">Socialización animal</h5>
                                 </div>
-                                <p class="m-0">Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet</p>
+                                <p class="m-0">Realiza actividades recreativas y de socialización con otras mascotas.</p>
                             </div>
                         </div>
                     </div>
@@ -284,34 +330,34 @@
 
     <!-- About Start -->
     <div class="container py-5">
+        <hr size="2px" width="80%" color="#c53f12">
         <div class="row py-5">
             <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
                 <h4 class="text-secondary mb-3">Sobre nosotros</h4>
                 <h1 class="display-4 mb-4"><span class="text-primary">Voluntariado</span> & <span class="text-secondary">Adopción</span></h1>
-                <h5 class="text-muted mb-3">Amet stet amet ut. Sit no vero vero no dolor. Sed erat ut sea. Just clita ut stet kasd at diam sit erat vero sit.</h5>
-                <p class="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
+                <h5 class="text-muted mb-3" align="justify">Sin los socios no podrí­amos existir, sin los padrinos tampoco, pero el trabajo de los voluntarios es especial.</h5>
+                <p class="mb-4" align="justify">Hay que estar al pie del cañón siempre, llueva, nieve o haga un terrible calor como suele pasar en pleno mes de enero a las cuatro de la tarde, pero ahí­ están, incansables. Todos los adoran, y no es para menos, son sus cuidadores, sus amigos, sus médicos, sus compañeros de juegos... qué más podemos decir de los voluntarios?</p>
                 <ul class="list-inline">
-                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Ayudando a perros y gatos callejeros</h5></li>
-                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Servicios de emergencia asociados</h5></li>
-                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Sumate!</h5></li>
+                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Cuidado diario, educación y sociabilización de los animales rescatados. </h5></li>
+                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Mantenimiento, orden y limpieza de las instalaciones.</h5></li>
+                    <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Rehabilitación física y psicológica de los animales rescatados.</h5></li>
                 </ul>
-                <a href="" class="btn btn-lg btn-primary mt-3 px-4">Conoce más</a>
+  
             </div>
             <div class="col-lg-5">
                 <div class="row px-3">
                     <div class="col-12 p-0">
-                        <img class="img-fluid w-100" src="img/about-1.jpg" alt="">
+                        <img class="img-fluid w-100" src="{%static "img/blog-1.jpg" %}" alt="">
                     </div>
-                    <div class="col-6 p-0">
-                        <img class="img-fluid w-100" src="img/about-2.jpg" alt="">
-                    </div>
-                    <div class="col-6 p-0">
-                        <img class="img-fluid w-100" src="img/about-3.jpg" alt="">
+                    <div class="col-12 p-0">
+                        <img class="img-fluid w-100" src="{%static "img/blog-3.jpg" %}" alt="">
                     </div>
                 </div>
             </div>
         </div>
+        <hr size="2px" width="80%" color="#c53f12">
     </div>
+    
     <!-- About End -->
 
 
@@ -320,31 +366,31 @@
         <div class="container py-5">
             <div class="d-flex flex-column text-center mb-5">
                 <h4 class="text-secondary mb-3">Nuestra labor</h4>
-                <h1 class="display-4 m-0"><span class="text-primary">Premium</span> Pet Services</h1>
+                <h1 class="display-4 m-0"><span class="text-primary">Recuperación</span> patita a patita</h1>
             </div>
             <div class="row pb-3">
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-house display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Rescate de animales</h3>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est magna diam eos, rebum sit vero stet ipsum justo</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+                        <p>Rescate y atención de animales abandonados o maltratados, principalmente perros y gatos y lucha contra el maltrato animal.</p>
+                
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-food display-3 font-weight-normal text-secondary mb-3"></h3>
                         <h3 class="mb-3">Adopción de mascotas</h3>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est magna diam eos, rebum sit vero stet ipsum justo</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+                        <p>Concienciación ciudadana sobre la adopción y tenencia responsable de animales.Búsqueda de familias adoptivas adecuadas.</p>
+                      
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
                         <h3 class="flaticon-grooming display-3 font-weight-normal text-secondary mb-3"></h3>
-                        <h3 class="mb-3">Entrenamiento de animales</h3>
-                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet, diam sea est magna diam eos, rebum sit vero stet ipsum justo</p>
-                        <a class="text-uppercase font-weight-bold" href="">Read More</a>
+                        <h3 class="mb-3">Recuperación de animales</h3>
+                        <p>Rehabilitación física y psicológica de los animales rescatados. Cuidado, educación y sociabilización de nuestras patitas.</p>
+                        
                     </div>
                 </div>
             </div>
@@ -356,6 +402,7 @@
 
     <!-- Team Start -->
     <div class="container mt-5 pt-5 pb-3">
+    <hr size="2px" width="80%" color="#c53f12">
         <div class="d-flex flex-column text-center mb-5">
             <h4 class="text-secondary mb-3">Miembros del equipo</h4>
             <h1 class="display-4 m-0">Conoce a  <span class="text-primary">nuestro equipo!</span></h1>
@@ -370,10 +417,10 @@
                             <i>Fundador & CEO</i>
                         </div>
                         <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -387,10 +434,10 @@
                             <i>Gerente administrativo</i>
                         </div>
                         <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -404,10 +451,10 @@
                             <i>Gerente de veterinaria</i>
                         </div>
                         <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -421,15 +468,16 @@
                             <i>Una de nuestras voluntarias</i>
                         </div>
                         <div class="team-social d-flex align-items-center justify-content-center bg-dark">
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    <hr size="2px" width="80%" color="#c53f12">
     </div>
     <!-- Team End -->
 
@@ -444,33 +492,33 @@
             <div class="owl-carousel testimonial-carousel">
                 <div class="bg-white mx-3 p-4">
                     <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                        <img class="img-fluid" src="img/testimonial-1.jpg" style="width: 80px; height: 80px;" alt="">
+                        <img class="img-fluid" src="{% static "img/testimonial-1.jpg" %}" style="width: 80px; height: 80px;" alt="">
                         <div class="ml-3">
                             <h5>Adoptante: Julián Álvarez</h5>
                             <i>Adoptada: Nala</i>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
+                    <p class="m-0">Nala fue encontrada en la puerta de una parrilla. Lo que más amamos de Nala es su personalidad dulce y cariñosa, siempre buscando un mimo. Verla tan animada y con tantas ganas de vivir, nos hace ver, una y otra vez, cuán necesarias son las segundas oportunidades, no?.</p>
                 </div>
                 <div class="bg-white mx-3 p-4">
                     <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                        <img class="img-fluid" src="img/testimonial-2.jpg" style="width: 80px; height: 80px;" alt="">
+                        <img class="img-fluid" src="{% static "img/testimonial-2.jpg" %}" style="width: 80px; height: 80px;" alt="">
                         <div class="ml-3">
-                            <h5>Adoptante: Tomás Uri</h5>
+                            <h5>Adoptante: Tomás Uribe</h5>
                             <i>Adoptado: Rocky</i>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
+                    <p class="m-0">Rocky llegó al refugio casi destruido. Hoy vive feliz con nuestra familia enseñándonos la importancia de las segundas oportunidades.</p>
                 </div>
                 <div class="bg-white mx-3 p-4">
                     <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                        <img class="img-fluid" src="img/testimonial-3.jpg" style="width: 80px; height: 80px;" alt="">
+                        <img class="img-fluid" src="{% static "img/testimonial-3.jpg" %}" style="width: 80px; height: 80px;" alt="">
                         <div class="ml-3">
-                            <h5>Adoptante: Luca Gior</h5>
+                            <h5>Adoptante: Luca Citta</h5>
                             <i>Adoptada: Lola</i>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
+                    <p class="m-0"> Hoy, Lola que tanto sufrió, que seguramente no entendía qué había hecho para merecer tanto dolor, ha cerrado su círculo y vive rodeado del amor de una familia que no dudó en darle una segunda oportunidad.</p>
                 </div>
             </div>
         </div>
@@ -482,46 +530,33 @@
         <div class="row pt-5">
             <div class="col-lg-4 col-md-12 mb-5">
                 <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Salvando</span>Patitas</h1>
-                <p class="m-0">Ipsum amet sed vero et lorem stet eos ut, labore sed sed stet sea est ipsum ut. Volup amet ea sanct ipsum, dolore vero lorem no duo eirmod. Eirmod amet ipsum no ipsum lorem clita ut. Ut sed sit lorem ea lorem sed, amet stet sit sea ea diam tempor kasd kasd. Diam nonumy etsit tempor ut sed diam sed et ea</p>
+                <p class="m-0">Algunos han tenido una vida muy dura, pero por suerte, se han cruzado en su camino personas de gran corazón que han pedido por ellos, nosotros que los recibimos devolviéndoles la dignidad y las madrinas y padrinos que los acompañan durante el proceso de recuperación.</p>
             </div>
             <div class="col-lg-8 col-md-12">
                 <div class="row">
-                    <div class="col-md-4 mb-5">
+                    <div class="col-md-5 mb-5">
                         <h5 class="text-primary mb-4">Contáctanos</h5>
-                        <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                        <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+
+                        <p><i class="fa fa-map-marker-alt mr-2"></i>Buenos Aires, Argentina</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</p>
+                        <p><i class="fa fa-envelope mr-2"></i>home.salvando.patitas@gmail.com</p>
                         <div class="d-flex justify-content-start mt-4">
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-5">
-                        <h5 class="text-primary mb-4">Popular Links</h5>
+                    <div class="col-md-3 mb-5">
+                        <h5 class="text-primary mb-4">Links frecuentes</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestra misión</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nuestro equipo</a>
-                            <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+                            <a class="text-white mb-2" href="{% url "index" %}"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                            <a class="text-white mb-2" href= "{% url "sobre-nosotros" %}" ><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a>
+                          
+                            <a class="text-white" href="{% url "news-letter" %}"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-5">
-                        <h5 class="text-primary mb-4">Newsletter</h5>
-                        <form action="">
-                            <div class="form-group">
-                                <input type="text" class="form-control border-0" placeholder="Tu nombre" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control border-0" placeholder="Tu email" required="required" />
-                            </div>
-                            <div>
-                                <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Enviar</button>
-                            </div>
-                        </form>
-                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -530,23 +565,20 @@
         <div class="row">
             <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
                 <p class="m-0 text-white">
-                    &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
+                    &copy; <a class="text-white font-weight-bold" href="{% url "sobre-nosotros" %}">Your Site Name</a>. All Rights Reserved. Designed by
                     <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
                 </p>
             </div>
             <div class="col-md-6 text-center text-md-right">
                 <ul class="nav d-inline-flex">
                     <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Privacidad</a>
+                        <a class="nav-link text-white py-0" href="{% url "preguntas-frecuentes" %}">FAQs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Términos</a>
+                        <a class="nav-link text-white py-0" href="{% url "terminos-condiciones" %}">Términos y condiciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">FAQs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Ayuda</a>
+                        <a class="nav-link text-white py-0" href="{% url "politica-privacidad" %}">Política de privacidad</a>
                     </li>
                 </ul>
             </div>

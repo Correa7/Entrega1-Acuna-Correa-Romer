@@ -3,20 +3,20 @@
 {% load static %}
 
 {% block titulo %}
-    Ficha de mascotas -
+    Ficha de mascotas - Salvando Patitas
 {% endblock %}
 
 {% block contenidoQueCambia%}
 <div style="padding: 20px 40px;">
 
     <h1>Ficha de mascotas</h1>
-    <form action=" " method="POST"
+    <form  method="POST" enctype="multipart/form-data"
         style="padding: 20px 80px;border-color: BLACK;border-width: 5px;border-style: solid;">
         {% csrf_token %}
 
         <table>
 
-            {{ form_mascotas.as_table }}
+            {{ form.as_table }}
 
         </table>
 
