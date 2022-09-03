@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block titulo %}
-    Resultados de búsqueda de fichas veterinarias -
+    Resultados de búsqueda de fichas veterinarias - Salvando Patitas
 {% endblock %}
 
 {% block contenidoQueCambia%}
@@ -21,11 +21,11 @@
 
             {%for ficha in fichas %}
 
-                <li> {{ficha.registro}} </li>
-                <li> {{ficha.vacunas}} </li>
-                <li> {{ficha.desparasitacion}} </li>
-                <li> {{ficha.castracion}} </li>
-                <li> {{ficha.observaciones}}</li>
+                <li> Numero de registro: N°  {{ficha.registro}} </li>
+                <li> Vacunas :{{ficha.vacuna_1}} - {{ficha.vacuna_2}}</li>
+                <li> Desparasitado: {{ficha.desparasitacion}} </li>
+                <li> Castrado:{{ficha.castracion}} </li>
+                <li> Observaciones: {{ficha.observaciones}}</li>
                 <br>
    
             {% endfor %}

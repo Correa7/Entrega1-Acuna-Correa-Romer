@@ -1,0 +1,27 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Ficha de refugios - Salvando Patitas
+{% endblock %}
+
+{% block contenidoQueCambia%}
+<div style = "padding: 20px 40px;">
+
+    <h1>Ficha de refugio</h1>
+    <form  method ="POST" enctype="multipart/form-data" style = "padding: 20px 80px;border-color: BLACK;border-width: 5px;border-style: solid;"> 
+        {% csrf_token %}
+
+        <table>
+
+            {{ form.as_table }}
+
+        </table>        
+
+     <input type="submit" name="Enviar">
+
+
+    </form>
+</div>
+{%endblock%}

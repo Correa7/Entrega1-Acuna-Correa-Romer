@@ -8,7 +8,7 @@ from Apps.Refugio.forms import Refugio_form
 
 
 
-def Ficha_refugio1 (request):
+def Ficha_refugio (request):
 
     if request.method == "POST":
 
@@ -20,7 +20,7 @@ def Ficha_refugio1 (request):
             ficha = Refugio(nombre = data["nombre"], telefono = data["telefono"], email= data["email"], domicilio= data["domicilio"])
             ficha.save()
 
-            return render (request, "index.html" , context ={})
+            return render (request, "inicio.html" , context ={})
     else:
 
         miFormulario = Refugio_form() 
@@ -37,16 +37,16 @@ def busqueda_refugio (request):
 
 
 
-def buscar_refugio(request):
+def buscar_refugio (request):
 
-    if request.POST.get("nombre"):
+    if request.GET["nombre"]:
 
-        nombre= request.post.GET("nombre")
+        nombre= request.GET["nombre"]
         fichas= Refugio.objects.filter(nombre__icontains = nombre)
         return render(request, "Refugio/ficha_resultado_refugio.html", {"fichas": fichas,"nombre": nombre})
 
     else:
-        respuesta ="Sin datos"
+        respuesta ="No enviaste datos"
 
-    return render(request, "inicio.html", {"respuesta": respuesta})
+    return render (request, "inicio.html", {"respuesta": respuesta})
 

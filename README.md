@@ -42,3 +42,4 @@ También brindar difusión para que se incorporen perros y gatos al refugio, as�
    - 2.3. Módulo con información para donaciones. 
    - 2.4. Módulo de empleados con la nómina de personal y su vinculación a cada sede del refugio. 
    - 2.5. Panel de administrador que permita, con usuario y clave, gestionar los empleados y su distribución entre refugios.
+   - 2.6. Base de datos con testimonios de adoptantes y perros y gatos adoptados.
