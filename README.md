@@ -9,8 +9,10 @@
 
 ### Instalaciones
 
-- pip install django
-- pip install Pillow
+- pip install django==4.0.6
+- pip install Pillow==9.2.0
+
+o "pip install -r requirements.txt" , para installar todos los paquetes.
 
 ### Paquetes instalados
 
