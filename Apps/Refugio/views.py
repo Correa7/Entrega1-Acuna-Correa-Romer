@@ -17,10 +17,10 @@ def Ficha_refugio (request):
         if miFormulario.is_valid():
 
             data = miFormulario.cleaned_data
-            ficha = Refugio(nombre = data["nombre"], telefono = data["telefono"], email= data["email"], domicilio= data["domicilio"])
+            ficha = Refugio(nombre = data["nombre"], telefono = data["telefono"], email= data["email"], direccion= data["direccion"])
             ficha.save()
 
-            return render (request, "inicio.html" , context ={})
+            return render (request, "index.html" , context ={})
     else:
 
         miFormulario = Refugio_form() 
@@ -49,4 +49,3 @@ def buscar_refugio (request):
         respuesta ="No enviaste datos"
 
     return render (request, "inicio.html", {"respuesta": respuesta})
-
